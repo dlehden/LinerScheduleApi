@@ -41,10 +41,8 @@ public class ScheduleController {
 	@RequestMapping("/api/{yyyymm}")
 	@ResponseBody
 	public ResponseEntity<List<ScheduleDto>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
-	   List<ScheduleDto> dto = scheduleService.findAll().stream().map(e->modelMapper.map(e,ScheduleDto.class)).collect(Collectors.toList());
-	
-		return ResponseEntity.ok(dto);
-				
+	   List<ScheduleDto> scheduleDto = scheduleService.findAll();
+		return ResponseEntity.ok(scheduleDto);
 	}
 	
 	@RequestMapping("/hello")

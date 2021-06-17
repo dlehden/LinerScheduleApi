@@ -34,7 +34,7 @@ public class DataSample implements ApplicationRunner {
 			//String sql = "CREATE TABLE USER (ID INTEGER NOT NULL, name VARCHAR(255), PRIMARY KEY (id))"; 
 			//statement.executeUpdate(sql); } 
 		   jdbcTemplate.execute("insert into schedule (vessel_code,vessel_name,etd,eta,ld_port,dc_port) values('code3','name','2021-10-10','2021-11-10','krpus','tbtbk')");
-		   jdbcTemplate.execute("insert into schedule (vessel_code,vessel_name,etd,eta,ld_port,dc_port) values('code1','name','2021-10-10','2021-11-10','krpus','tbtbk')");
+		   jdbcTemplate.execute("insert into schedule (vessel_code,vessel_name,etd,eta,ld_port,dc_port) values('code1','name','2021-10-10','2020-11-10','krpus','tbtbk')");
 		}
 	}
 	@Bean
