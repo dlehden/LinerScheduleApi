@@ -19,8 +19,8 @@ public class ScheduleDto {
 	}
 	public String getSTATUS() {
 		
-		if(ETA.substring(0,4).equals("2021")) return "end";
-		else return STATUS = "go";
+		if(ETA.substring(0,4).equals("2021")) return "Close";
+		else return STATUS = "Booking";
 	}
 	
 

@@ -42,7 +42,7 @@ public class ScheduleController {
 	@ResponseBody
 	public ResponseEntity<List<ScheduleDto>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
 	   List<ScheduleDto> scheduleDto = scheduleService.findAll();
-		return ResponseEntity.ok(scheduleDto);
+		return ResponseEntity.ok(scheduleDto); 
 	}
 	
 	@RequestMapping("/hello")
