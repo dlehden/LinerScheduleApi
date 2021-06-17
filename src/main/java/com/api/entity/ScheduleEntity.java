@@ -9,8 +9,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.Getter;
+
 @Entity
 @Table(name="schedule")
+@Getter
 public class ScheduleEntity {
 	@Id
 	private String VESSEL_CODE;
@@ -20,10 +23,8 @@ public class ScheduleEntity {
 	private String LD_PORT;
 	@Column(name="dc_port")
 	private String DC_PORT;
-	@Column(name="etd")
-	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Asia/Seoul")
-	Date ETD;
-	@Column(name="eta")
-	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Asia/Seoul")
-	Date ETA;
+	//@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Asia/Seoul")
+	private Date ETD;
+	//@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Asia/Seoul")
+	private Date ETA;
 }

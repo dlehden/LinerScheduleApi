@@ -3,6 +3,7 @@ package com.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,10 +36,11 @@ public class ScheduleController {
 
 	@RequestMapping("/api/{yyyymm}")
 	@ResponseBody
-	public List<ScheduleEntity> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
+	public ResponseEntity<List<ScheduleEntity>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
 		//dataSample.createTableAndData();
 		System.out.println(yyyymm);
-		return scheduleService.findAll();
+	
+		return ResponseEntity.ok(scheduleService.findAll());
 	}
 
 }
