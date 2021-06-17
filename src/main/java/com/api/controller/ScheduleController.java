@@ -38,7 +38,7 @@ public class ScheduleController {
 	@ResponseBody
 	public ResponseEntity<List<ScheduleEntity>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
 		//dataSample.createTableAndData();
-		System.out.println(yyyymm);
+		//System.out.println(yyyymm);
 	
 		return ResponseEntity.ok(scheduleService.findAll());
 	}
