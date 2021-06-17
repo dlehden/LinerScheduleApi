@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.component.DataSample;
 import com.api.entity.ScheduleEntity;
 import com.api.service.ScheduleService;
+
+import lombok.extern.slf4j.Slf4j;
 /**
  *  @RequestParam
 	http://localhost:8080?aaa=bbb&ccc=ddd
@@ -25,6 +27,7 @@ import com.api.service.ScheduleService;
  */
 @RestController
 @RequestMapping("/v1/schedule/")
+@Slf4j
 public class ScheduleController {
 	@Autowired
 	DataSample dataSample;
@@ -38,8 +41,7 @@ public class ScheduleController {
 	@ResponseBody
 	public ResponseEntity<List<ScheduleEntity>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
 		//dataSample.createTableAndData();
-		//System.out.println(yyyymm);
-	
+		log.info("ABC");
 		return ResponseEntity.ok(scheduleService.findAll());
 	}
 
