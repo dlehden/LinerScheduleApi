@@ -6,14 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.Getter;
 
 @Entity
 @Table(name="schedule")
 @Getter
+
 public class ScheduleEntity {
 	@Id
 	private String VESSEL_CODE;

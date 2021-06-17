@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,8 +30,6 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/v1/schedule/")
 @Slf4j
 public class ScheduleController {
-	@Autowired
-	DataSample dataSample;
 	
 	ScheduleService scheduleService;
 	public ScheduleController(ScheduleService scheduleService) {
@@ -44,5 +43,12 @@ public class ScheduleController {
 		log.info("ABC");
 		return ResponseEntity.ok(scheduleService.findAll());
 	}
+	
+	@RequestMapping("/hello")
+	@ResponseBody
+	public ResponseEntity<String> getTest() {
+		return ResponseEntity.ok("Hello");
+	}
+	
 
 }

@@ -15,15 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 @Slf4j
 public class ScheduleapiApplication {
-
-	@Autowired
-	DataSample dataSample;
-	@Autowired
-	DataSource dataSource;
-	
 	public static void main(String[] args)throws Exception {
 		SpringApplication.run(ScheduleapiApplication.class, args);
 	}
-
-
 }
