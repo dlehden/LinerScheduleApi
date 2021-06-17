@@ -32,7 +32,7 @@ class ScheduleTest {
     }
     
     @Test
-    public void scheduleApi테스트() throws Exception {
+    public void scheduleApi_상태200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/v1/schedule/api/2001")
         		.contentType(MediaType.APPLICATION_JSON)
         		.accept(MediaType.APPLICATION_JSON))

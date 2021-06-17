@@ -1,17 +1,17 @@
 package com.api.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.component.DataSample;
-import com.api.entity.ScheduleEntity;
+import com.api.dto.ScheduleDto;
 import com.api.service.ScheduleService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -30,25 +30,30 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/v1/schedule/")
 @Slf4j
 public class ScheduleController {
-	
-	ScheduleService scheduleService;
+	@Autowired
+	ModelMapper modelMapper;
+	private final ScheduleService scheduleService;
+
 	public ScheduleController(ScheduleService scheduleService) {
 		this.scheduleService = scheduleService;
 	}
 
 	@RequestMapping("/api/{yyyymm}")
 	@ResponseBody
-	public ResponseEntity<List<ScheduleEntity>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
-		//dataSample.createTableAndData();
-		log.info("ABC");
-		return ResponseEntity.ok(scheduleService.findAll());
+	public ResponseEntity<List<ScheduleDto>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
+	   List<ScheduleDto> dto = scheduleService.findAll().stream().map(e->modelMapper.map(e,ScheduleDto.class)).collect(Collectors.toList());
+	
+		return ResponseEntity.ok(dto);
+				
 	}
 	
 	@RequestMapping("/hello")
 	@ResponseBody
 	public ResponseEntity<String> getTest() {
+		//dataSample.createTableAndData();
 		return ResponseEntity.ok("Hello");
 	}
-	
+
+
 
 }

@@ -1,10 +1,10 @@
 package com.api.component;
 
 import java.sql.Connection;
-import java.sql.Statement;
 
 import javax.sql.DataSource;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -37,7 +37,10 @@ public class DataSample implements ApplicationRunner {
 		   jdbcTemplate.execute("insert into schedule (vessel_code,vessel_name,etd,eta,ld_port,dc_port) values('code1','name','2021-10-10','2021-11-10','krpus','tbtbk')");
 		}
 	}
-	
+	@Bean
+	public ModelMapper modelMapper() {
+	    return new ModelMapper();
+	}
 	//@Bean  //bean 주입시 컨테이너 위로 바로 올라가진다.
 	public void createTableAndData() {
 		jdbcTemplate.execute("insert into schedule (vessel_code,vessel_name,etd,eta,ld_port,dc_port) values('code3','name','2021-10-10','2021-11-10','krpus','tbtbk')");
