@@ -1,7 +1,11 @@
 package com.api.exception;
 
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -28,5 +32,23 @@ public class ApiExceptionHandler {
 					new ApiErrorResponse("error-0001","No Schedule Data: " + ex.getYyyymm());
 		return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(ScheduleLengthException.class)
+	public ResponseEntity<ApiErrorResponse>handleLengthException(ScheduleLengthException ex){
+		System.out.println(ex.getYyyymm()+"0------------------여기 실행");
+		ApiErrorResponse response =
+					new ApiErrorResponse("error-0002","No Schedule Legnth Error: " + ex.getERRORVALUE() + " " +ex.getSTATUS());
+		return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(NullPointerException.class) 
+	public ResponseEntity<ApiErrorResponse>nullHandlerException(){
+		System.out.println("1------------------여기 실행");
+		ApiErrorResponse response =
+					new ApiErrorResponse("error-0000","Null Data: ");
+		return new ResponseEntity<>(response,HttpStatus.NO_CONTENT);
+	}
+	
+
 
 }

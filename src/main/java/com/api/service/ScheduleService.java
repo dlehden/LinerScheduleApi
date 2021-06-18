@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Service;
 
 import com.api.dto.ScheduleDto;
@@ -22,13 +23,13 @@ public class ScheduleService {
 	}
 	
 	
-	public List<ScheduleDto>findAll(){
+	public List<EntityModel<ScheduleDto>> findAll(){
         //Entity로 데이터를 1차 추출   
 		List<ScheduleEntity> scheduleAll = new ArrayList<>();
 		scheduleRepository.findAll().forEach(e->scheduleAll.add(e));
 		//Entity to Dto로 변환하기위해서 modelMapper 사용처리 
-	    List<ScheduleDto> scheduleDto = scheduleAll.stream()
-                   .map(e->modelMapper.map(e,ScheduleDto.class))
+	    List<EntityModel<ScheduleDto>> scheduleDto = scheduleAll.stream()
+                   .map(e->EntityModel.of(modelMapper.map(e,ScheduleDto.class)))
                    .collect(Collectors.toList());
 		
 		   return scheduleDto;

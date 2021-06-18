@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ScheduleDto {
+public class ScheduleDto<T> {
 //	private String VESSEL_CODE;
 //	private String VESSEL_NAME;
 //	private String LD_PORT;

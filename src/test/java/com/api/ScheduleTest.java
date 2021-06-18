@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 class ScheduleTest {
     @Autowired // Enable to test cases because web server doesn't work
     MockMvc mockMvc;
+    
 //    @Test
 //    public void 날짜3자리넣었을시() throws Exception {
 //        mockMvc.perform(MockMvcRequestBuilders.get("/v1/schedule/api/200")
@@ -32,12 +33,13 @@ class ScheduleTest {
 
     @Test
     public void scheduleApi_상태200() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/v1/schedule/api/2001")
-        		.contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(get("/v1/schedule/api/{yyyymm}/{ldport}/{dcport}","201105","ggggg","ddgdd")
+        		.contentType(MediaType.TEXT_PLAIN)
         		.accept(MediaType.APPLICATION_JSON))
         	    .andDo(print())
                 .andExpect(status().isOk());
     }
+
     
 //    @Test
 //    public void yyyymm_2011일시_오류처리() throws Exception {

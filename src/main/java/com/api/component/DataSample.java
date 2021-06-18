@@ -1,6 +1,8 @@
 package com.api.component;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -9,7 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.hateoas.client.LinkDiscoverer;
+import org.springframework.hateoas.client.LinkDiscoverers;
+import org.springframework.hateoas.mediatype.collectionjson.CollectionJsonLinkDiscoverer;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.plugin.core.SimplePluginRegistry;
 import org.springframework.stereotype.Component;
 /**
  * @Component 를 사용하여 프로그램 실행 시
@@ -41,6 +47,7 @@ public class DataSample implements ApplicationRunner {
 	public ModelMapper modelMapper() {
 	    return new ModelMapper();
 	}
+
 	//@Bean  //bean 주입시 컨테이너 위로 바로 올라가진다.
 	public void createTableAndData() {
 		jdbcTemplate.execute("insert into schedule (vessel_code,vessel_name,etd,eta,ld_port,dc_port) values('code3','name','2021-10-10','2021-11-10','krpus','tbtbk')");
