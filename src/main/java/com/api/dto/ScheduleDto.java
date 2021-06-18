@@ -14,10 +14,10 @@ public class ScheduleDto {
 	private String ETA;
 	private String STATUS;
 	
-	public ScheduleDto() {
+	private ScheduleDto() {
 		
 	}
-	public String getSTATUS() {
+	public  String getSTATUS() {
 		
 		if(ETA.substring(0,4).equals("2021")) return "Close";
 		else return STATUS = "Booking";

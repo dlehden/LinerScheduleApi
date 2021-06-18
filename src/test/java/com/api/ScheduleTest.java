@@ -21,16 +21,15 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 class ScheduleTest {
     @Autowired // Enable to test cases because web server doesn't work
     MockMvc mockMvc;
-	
-    
-    @Test
-    public void hello가_리턴된다() throws Exception {
-        mockMvc.perform(get("/v1/schedule/hello")
-        		 .contentType(MediaType.TEXT_PLAIN))
-                  .andExpect(status().isOk());
-               // .andExpect((ResultMatcher) content().string("Hello"));
-    }
-    
+//    @Test
+//    public void 날짜3자리넣었을시() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/v1/schedule/api/200")
+//        		.contentType(MediaType.APPLICATION_JSON)
+//        		.accept(MediaType.APPLICATION_JSON))
+//        	    .andDo(print())
+//                .andExpect(status().isOk());
+//    }
+
     @Test
     public void scheduleApi_상태200() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/v1/schedule/api/2001")
@@ -39,5 +38,14 @@ class ScheduleTest {
         	    .andDo(print())
                 .andExpect(status().isOk());
     }
+    
+//    @Test
+//    public void yyyymm_2011일시_오류처리() throws Exception {
+//        mockMvc.perform(MockMvcRequestBuilders.get("/v1/schedule/api/2011")
+//        		.contentType(MediaType.APPLICATION_JSON)
+//        		.accept(MediaType.APPLICATION_JSON))
+//        	    .andDo(print())
+//                .andExpect(status().isOk());
+//    }
  
 }

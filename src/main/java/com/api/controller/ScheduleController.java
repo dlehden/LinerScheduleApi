@@ -1,7 +1,6 @@
 package com.api.controller;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.api.dto.ScheduleDto;
+import com.api.exception.ScheduleNotFoundException;
 import com.api.service.ScheduleService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author drlee
  *
  */
+
 @RestController
 @RequestMapping("/v1/schedule/")
 @Slf4j
@@ -40,18 +41,13 @@ public class ScheduleController {
 
 	@RequestMapping("/api/{yyyymm}")
 	@ResponseBody
-	public ResponseEntity<List<ScheduleDto>> apiSchedule(@PathVariable("yyyymm") String yyyymm) {
+	public ResponseEntity<?> apiSchedule(
+		   @PathVariable("yyyymm")String yyyymm
+			) {
 	   List<ScheduleDto> scheduleDto = scheduleService.findAll();
-		return ResponseEntity.ok(scheduleDto); 
+	   if(!yyyymm.equals(""))   throw new ScheduleNotFoundException(yyyymm); 
+	   return ResponseEntity.ok(scheduleDto); 
 	}
-	
-	@RequestMapping("/hello")
-	@ResponseBody
-	public ResponseEntity<String> getTest() {
-		//dataSample.createTableAndData();
-		return ResponseEntity.ok("Hello");
-	}
-
 
 
 }
